@@ -13,7 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        return response()->json($comments);
     }
 
     /**
@@ -37,7 +38,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return response()->json($comment);
     }
 
     /**

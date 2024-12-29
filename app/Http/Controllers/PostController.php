@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return response()->json($posts);
     }
 
     /**
@@ -37,7 +38,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return response()->json($post);
     }
 
     /**
@@ -62,5 +63,9 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function comments(Post $post){
+        return response()->json($post->comments()->get());
     }
 }
