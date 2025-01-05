@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -37,7 +38,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $title;
         $post->content = $content;
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return response()->json($post);
