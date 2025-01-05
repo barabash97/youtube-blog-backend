@@ -30,7 +30,17 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        //salvataggio
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        $post = new Post();
+        $post->title = $title;
+        $post->content = $content;
+        $post->user_id = 1;
+        $post->save();
+
+        return response()->json($post);
     }
 
     /**
@@ -54,7 +64,14 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        $post->title = $title;
+        $post->content = $content;
+        $post->save();
+
+        return response()->json($post);
     }
 
     /**
