@@ -23,6 +23,11 @@ type Query {
     post(id: ID @eq): Post! @find
 }
 
+type Mutation {
+    createPost(title: String!, content: String!): Post! @field(resolver: "App\\GraphQL\\Mutations\\CreatePostMutation")
+    updatePost(id: ID!, title: String!, content: String!): Post! @field(resolver: "App\\GraphQL\\Mutations\\UpdatePostMutation")
+}
+
 "Account of a person who utilizes this application."
 type User {
     "Unique primary key."
