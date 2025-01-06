@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 final readonly class CreatePostMutation
 {
@@ -17,7 +18,7 @@ final readonly class CreatePostMutation
         $post = new Post();
         $post->title = $title;
         $post->content = $content;
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
